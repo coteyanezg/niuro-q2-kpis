@@ -733,6 +733,101 @@
       font-size: 17px;
     }
 
+    /* TOOLS STACK TABLE */
+    .tools-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .tools-table th {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 12px 14px;
+      text-align: left;
+      background: var(--navy);
+      color: var(--white);
+      white-space: nowrap;
+    }
+
+    .tools-table th:first-child { border-top-left-radius: var(--radius-sm); }
+    .tools-table th:last-child { border-top-right-radius: var(--radius-sm); }
+
+    .tools-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--gray-200);
+      vertical-align: top;
+      color: var(--gray-700);
+    }
+
+    .tools-table tbody tr:nth-child(even) { background: var(--gray-50); }
+
+    .tools-table .col-tool {
+      font-weight: 700;
+      color: var(--navy);
+      white-space: nowrap;
+    }
+
+    .tools-table .col-cost {
+      font-family: var(--font-mono);
+      font-weight: 600;
+      color: var(--navy);
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .tools-table .col-mail {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--gray-500);
+      white-space: nowrap;
+    }
+
+    .tools-table .col-notes {
+      font-size: 12px;
+      color: var(--gray-600);
+      line-height: 1.45;
+      min-width: 200px;
+    }
+
+    .estado-pill {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      padding: 4px 10px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    .estado-pill.activa {
+      background: var(--teal-50);
+      color: var(--teal);
+      border: 1px solid rgba(13,148,136,0.25);
+    }
+
+    .estado-pill.cancelada {
+      background: var(--red-50);
+      color: var(--red-600);
+      border: 1px solid rgba(239,68,68,0.2);
+    }
+
+    .tools-table tr.tool-cancelled .col-tool,
+    .tools-table tr.tool-cancelled td { color: var(--gray-400); }
+    .tools-table tr.tool-cancelled .col-cost { color: var(--gray-400); }
+
+    .tools-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .tools-table-wrap { overflow-x: auto; }
+
     /* TIMELINE STEPS */
     .timeline {
       display: flex;
@@ -965,7 +1060,8 @@
   <a href="#s5">5<span class="tooltip">KPIs Q2</span></a>
   <a href="#s6">6<span class="tooltip">Escenarios</span></a>
   <a href="#s7">7<span class="tooltip">Presupuesto</span></a>
-  <a href="#s8">8<span class="tooltip">Pasos</span></a>
+  <a href="#s8">8<span class="tooltip">Stack Herramientas</span></a>
+  <a href="#s9">9<span class="tooltip">Pasos</span></a>
 </nav>
 
 <!-- SCROLL PROGRESS -->
@@ -1008,7 +1104,8 @@
           <div style="display: flex; flex-direction: column; gap: 6px;">
             <a href="#s6" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px;" onmouseover="this.style.color='#6694FF'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">06. Escenario A vs B</a>
             <a href="#s7" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px;" onmouseover="this.style.color='#6694FF'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">07. Presupuesto</a>
-            <a href="#s8" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px;" onmouseover="this.style.color='#6694FF'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">08. Pasos inmediatos</a>
+            <a href="#s8" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px;" onmouseover="this.style.color='#6694FF'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">08. Stack de herramientas</a>
+            <a href="#s9" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px;" onmouseover="this.style.color='#6694FF'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">09. Pasos inmediatos</a>
           </div>
         </div>
       </div>
@@ -1627,9 +1724,197 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════════ -->
-  <!-- SLIDE 8: PASOS INMEDIATOS                          -->
+  <!-- SLIDE 8: STACK DE HERRAMIENTAS                     -->
   <!-- ═══════════════════════════════════════════════════ -->
-  <section id="s8">
+  <section id="s8" style="min-height: auto; padding-top: 80px; padding-bottom: 80px;">
+    <div class="section-inner">
+      <div class="section-eyebrow" style="background: rgba(102,148,255,0.08); border-color: rgba(102,148,255,0.15); color: var(--blue);">Stack de herramientas</div>
+      <h2 class="section-title">Desglose del stack: <span class="gold-highlight">$841.70/mes en herramientas activas</span></h2>
+      <p class="section-subtitle">Inventario completo de licencias de marketing por marca, costo y estado. HubSpot concentra el 71.5% del gasto total.</p>
+
+      <!-- SUMMARY CARDS -->
+      <div class="tools-summary-grid">
+        <div class="metric-card">
+          <div class="metric-accent"></div>
+          <div class="metric-number">$841.70</div>
+          <div class="metric-label">Total activas USD/mes</div>
+          <div class="metric-desc">Suma de las 10 herramientas activas</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-accent" style="background: var(--teal)"></div>
+          <div class="metric-number" style="color: var(--teal)">10</div>
+          <div class="metric-label">Herramientas activas</div>
+          <div class="metric-desc">En uso para Niuro y Enderys</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-accent" style="background: var(--red-500)"></div>
+          <div class="metric-number" style="color: var(--red-600)">3</div>
+          <div class="metric-label">Canceladas</div>
+          <div class="metric-desc">Dadas de baja por no uso</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-accent" style="background: linear-gradient(90deg, var(--gold), var(--teal))"></div>
+          <div class="metric-number">71.5%</div>
+          <div class="metric-label">Peso de HubSpot</div>
+          <div class="metric-desc">Del gasto total en herramientas</div>
+        </div>
+      </div>
+
+      <!-- TOOLS TABLE -->
+      <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 28px;">
+        <div class="tools-table-wrap">
+          <table class="tools-table">
+            <thead>
+              <tr>
+                <th>Herramienta</th>
+                <th>Plan</th>
+                <th style="text-align: right;">USD/mes</th>
+                <th>Correo</th>
+                <th>Marca</th>
+                <th>Estado</th>
+                <th>Notas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="col-tool">HubSpot</td>
+                <td>Marketing Hub Professional (3 lic, 2K contactos MKT)</td>
+                <td class="col-cost">$471.70</td>
+                <td class="col-mail">Acceso por seat</td>
+                <td>Niuro + Enderys</td>
+                <td><span class="estado-pill activa">Activa</span></td>
+                <td class="col-notes">71.5% del gasto total. Evaluar opciones m&aacute;s econ&oacute;micas para reemplazar el ecosistema de HubSpot.</td>
+              </tr>
+              <tr>
+                <td class="col-tool">Google AI Studio</td>
+                <td>Pago &uacute;nico</td>
+                <td class="col-cost">$50</td>
+                <td class="col-mail">&ndash;</td>
+                <td>Ambas</td>
+                <td><span class="estado-pill activa">Activa</span></td>
+                <td class="col-notes">Por uso (tokens). Compartido con otros proyectos.</td>
+              </tr>
+              <tr class="tool-cancelled">
+                <td class="col-tool">MailerLite</td>
+                <td>Advanced (2,500&ndash;5,000 subs)</td>
+                <td class="col-cost">$50</td>
+                <td class="col-mail">hiring@niuro.io</td>
+                <td>Niuro</td>
+                <td><span class="estado-pill cancelada">Cancelada</span></td>
+                <td class="col-notes">Se desactiva por no uso.</td>
+              </tr>
+              <tr>
+                <td class="col-tool">Screen Studio</td>
+                <td>Monthly</td>
+                <td class="col-cost">$29</td>
+                <td class="col-mail">joaquin@enderys.com</td>
+                <td>Ambas</td>
+                <td><span class="estado-pill activa">Activa</span></td>
+                <td class="col-notes">Demos de plataforma, mantener. Cambiar cuenta asociada (es la de Joaqu&iacute;n).</td>
+              </tr>
+              <tr>
+                <td class="col-tool">CapCut</td>
+                <td>Pro</td>
+                <td class="col-cost">$24</td>
+                <td class="col-mail">mariajose@niuro.io</td>
+                <td>Ambas</td>
+                <td><span class="estado-pill activa">Activa</span></td>
+                <td class="col-notes">Edici&oacute;n video/reels.</td>
+              </tr>
+              <tr class="tool-cancelled">
+                <td class="col-tool">Metricool</td>
+                <td>Starter 5 Brands</td>
+                <td class="col-cost">$22</td>
+                <td class="col-mail">dev@enderys.com</td>
+                <td>Niuro + Enderys</td>
+                <td><span class="estado-pill cancelada">Cancelada</span></td>
+                <td class="col-notes">Se dio de baja, este es el &uacute;ltimo mes.</td>
+              </tr>
+              <tr>
+                <td class="col-tool">Figma</td>
+                <td>Professional (1 puesto)</td>
+                <td class="col-cost">$20</td>
+                <td class="col-mail">dev@enderys.com</td>
+                <td>Ambas</td>
+                <td><span class="estado-pill activa">Activa</span></td>
+                <td class="col-notes">Renueva 25 abr. Sin cr&eacute;ditos AI.</td>
+              </tr>
+              <tr>
+                <td class="col-tool">ManyChat</td>
+                <td>Pro</td>
+                <td class="col-cost">$15</td>
+                <td class="col-mail">marketing@niuro.io</td>
+                <td>Niuro</td>
+                <td><span class="estado-pill activa">Activa</span></td>
+                <td class="col-notes">Se dio de baja una de dos cuentas, $15 por cuenta.</td>
+              </tr>
+              <tr>
+                <td class="col-tool">Notion</td>
+                <td>Plus</td>
+                <td class="col-cost">$12</td>
+                <td class="col-mail">mariajose@niuro.io</td>
+                <td>Ambas</td>
+                <td><span class="estado-pill activa">Activa</span></td>
+                <td class="col-notes">Costo por miembro.</td>
+              </tr>
+              <tr>
+                <td class="col-tool">Canva</td>
+                <td>Pro</td>
+                <td class="col-cost">$15</td>
+                <td class="col-mail">mariajose@niuro.io</td>
+                <td>Ambas</td>
+                <td><span class="estado-pill activa">Activa</span></td>
+                <td class="col-notes">CLP $10.000. Dise&ntilde;o social/presentaciones.</td>
+              </tr>
+              <tr>
+                <td class="col-tool">ElevenLabs</td>
+                <td>Starter</td>
+                <td class="col-cost">$5</td>
+                <td class="col-mail">marketing@niuro.io</td>
+                <td>Ambas</td>
+                <td><span class="estado-pill activa">Activa</span></td>
+                <td class="col-notes">Voiceover para videos.</td>
+              </tr>
+              <tr>
+                <td class="col-tool">Claude Code</td>
+                <td>Max</td>
+                <td class="col-cost">$200</td>
+                <td class="col-mail">mariajose@niuro.io</td>
+                <td>Ambas</td>
+                <td><span class="estado-pill activa">Activa</span></td>
+                <td class="col-notes">Pase gratuito activo. Si se cobra ~$200/mes.</td>
+              </tr>
+              <tr class="tool-cancelled">
+                <td class="col-tool">Framer</td>
+                <td>&ndash;</td>
+                <td class="col-cost">$0</td>
+                <td class="col-mail">&ndash;</td>
+                <td>&ndash;</td>
+                <td><span class="estado-pill cancelada">Cancelada</span></td>
+                <td class="col-notes">Estuvo 1 mes y se dio de baja.</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr class="total-row" style="border-top: 2px solid var(--navy);">
+                <td colspan="2" style="padding: 14px; font-family: var(--font-display); font-weight: 700; font-size: 15px; color: var(--navy); border-bottom: none;">Total herramientas activas</td>
+                <td class="col-cost" style="font-size: 16px; padding: 14px; border-bottom: none;">$841.70</td>
+                <td colspan="4" style="padding: 14px; font-family: var(--font-mono); font-size: 12px; color: var(--gray-500); border-bottom: none;">10 activas &middot; 3 canceladas</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+
+      <div class="callout teal" style="margin-top: 24px;">
+        <strong>Caja real hoy:</strong> Claude Code suma $200 al total, pero hoy se paga $0 (pase gratuito), por lo que la caja real es de aproximadamente <strong>$641.70/mes</strong>.
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- SLIDE 9: PASOS INMEDIATOS                          -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <section id="s9">
     <div class="section-inner">
       <div class="section-eyebrow" style="background: rgba(102,148,255,0.08); border-color: rgba(102,148,255,0.15); color: var(--blue);">Pasos inmediatos</div>
       <h2 class="section-title">Qu&eacute; pasa <span class="gold-highlight">esta semana y este mes</span></h2>
